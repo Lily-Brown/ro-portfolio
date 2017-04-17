@@ -8,6 +8,12 @@
     <% @project.images.each do |image|%>
       <p><%= image_tag image.image %></p>
       <p><%= image.caption %></p>
+      <div>
+        <p><%= link_to 'Edit', edit_project_image_path(image.project,image),
+              class: 'waves-effect waves-light btn' %></p>
+        <p><%= link_to 'Delete', project_image_path(image.project,image),
+              class: 'waves-effect waves-light btn', method: :delete %></p>
+      </div>
     <% end %>
   <% end %>
 

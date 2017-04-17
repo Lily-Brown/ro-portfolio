@@ -32,20 +32,20 @@ class ImagesController < ApplicationController
 
     if @image.save
       flash[:success] = "Image updated successfully."
-      redirect_to @image
+      redirect_to @image.project
     else
       flash[:error] = "Image has not been updated."
-      render :edit
+      redirect_to @image.project
     end
   end
 
   def destroy
     if @image.destroy
       flash[:success] = "Image deleted successfully."
-      redirect_to images_path
+      redirect_to @image.project
     else
       flash[:error] = "Image has not been deleted."
-      redirect_to @image
+      redirect_to @image.project
     end
   end
 
