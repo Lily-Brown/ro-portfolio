@@ -26,6 +26,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @image = Image.new
+    @image.project = @project
   end
 
   def edit
