@@ -18,6 +18,10 @@
 $( document ).ready(function() {
   $('#new-image-link').on('click', function (event) {
     event.preventDefault();
-    $('#new-image-form').removeClass('hide');
+    if ($('#new-image-form')[0].classList.contains('hide')) {
+      $('#new-image-form')[0].classList.remove('hide');
+    } else {
+      $('#new-image-form')[0].classList.add('hide');
+    }
   });
 });
