@@ -4,6 +4,13 @@
 
   <p><%= @project.summary %></p>
 
+  <% if @project.images.length > 0 %>
+    <% @project.images.each do |image|%>
+      <p><%= image_tag image.image %></p>
+      <p><%= image.caption %></p>
+    <% end %>
+  <% end %>
+
   <p>
     <%= link_to 'Edit', edit_project_path(@project) %>
     <%= link_to 'Delete', project_path(@project), method: :delete %>
