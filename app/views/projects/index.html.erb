@@ -1,0 +1,18 @@
+<div>
+
+  <!-- RECENT PROJECTS -->
+  <ul class="collapsible popout" data-collapsible="accordion">
+  <% @projects.each do |project|%>
+    <li>
+      <div>
+        <%= link_to project.title, project_path(project), class: 'bigger-font' %></br>
+        <%= project.summary %>
+      </div>
+    </li>
+  <% end %>
+  <!-- END RECENT PROJECTS -->
+
+  <div>
+    <p><%= link_to 'New Project', new_project_path %></p>
+  </div>
+</div>
