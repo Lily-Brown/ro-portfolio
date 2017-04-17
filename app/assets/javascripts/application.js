@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$( document ).ready(function() {
+  $('#new-image-link').on('click', function (event) {
+    event.preventDefault();
+    $('#new-image-form').removeClass('hide');
+  });
+});

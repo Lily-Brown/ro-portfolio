@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :get_project, only: [:show, :edit, :update, :destroy]
+  before_action :get_images, only: [:show, :edit, :update, :destroy]
   # before_action :verify_logged_in, only: [:create, :update,:destroy]
   # before_action :verify_user, only: [:edit, :update, :destroy]
 
@@ -25,6 +26,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @image = Image.new
+    @image.project = @project
   end
 
   def edit
@@ -56,6 +59,10 @@ class ProjectsController < ApplicationController
 
   def get_project
     @project = Project.find(params[:id])
+  end
+
+  def get_images
+    @images = Image.where(:project_id => params[:id])
   end
 
   # def verify_logged_in
