@@ -1,10 +1,13 @@
 <div class='project-info'>
   <% @projects.each do |project|%>
     <div class='project-div'>
-      <% if project.primary_image != nil %>
+      <% if project.images.length > 0 && project.primary_image != nil %>
         <p><%= image_tag project.primary_image.image, class: 'project-img', id: project.id %></p>
-      <% else %>
+      <% elsif project.images.length > 0 %>
         <p><%= image_tag project.images.first.image, class: 'project-img', id: project.id %></p>
+      <% else %>
+      <br />
+      <p>Add Images To Your Project</p>
       <% end %>
       <% if user_signed_in? %>
         <%= link_to 'Edit', project_path(project), class: 'btn btn-secondary' %>
@@ -23,9 +26,9 @@
             <div id='carousel-<%= project.id %>' class='carousel'>
               <% project.images.order('id asc').each do |image|%>
                 <% if image == project.images.last %>
-                  <div class='carousel-item active'>
+                <div class='carousel-item active'>
                 <% else %>
-                  <div class='carousel-item'>
+                <div class='carousel-item'>
                 <% end %>
                   <div class='carousel-hover'>
                     <%= image_tag image.image %>
