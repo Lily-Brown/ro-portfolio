@@ -1,13 +1,14 @@
-<div>
-
-  <ul class="collapsible popout" data-collapsible="accordion">
+<div class='project-info'>
   <% @projects.each do |project|%>
-    <li>
-      <div>
-        <%= link_to project.title, project_path(project), class: 'bigger-font' %></br>
-        <%= project.summary %>
-      </div>
-    </li>
+    <div class='project-div'>
+      <% if project.primary_image != nil %>
+        <p><%= image_tag project.primary_image.image, class: 'project-img' %></p>
+      <% else %>
+        <p><%= image_tag project.images.first.image, class: 'project-img' %></p>
+      <% end %>
+      <% if user_signed_in? %>
+        <%= link_to 'Edit', project_path(project), class: 'btn btn-secondary' %>
+      <% end %>
+    </div>
   <% end %>
-
 </div>
