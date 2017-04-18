@@ -13,7 +13,7 @@
           <p><%= link_to 'Edit', edit_project_image_path(image.project,image),
                 class: 'waves-effect waves-light btn' %></p>
           <p><%= link_to 'Delete', project_image_path(image.project,image),
-                class: 'waves-effect waves-light btn', method: :delete %></p>
+                class: 'waves-effect waves-light btn', method: :delete, data: {confirm: "Are you sure you want to Delete this Image?"} %></p>
         </div>
       <% end %>
     <% end %>
@@ -21,35 +21,49 @@
 
   <% if user_signed_in? %>
     <p>
-      <%= link_to 'Add New Image', '#', :id => 'new-image-link' %>
+      <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#newImageModal'>
+        Add New Image
+      </button>
     </p>
   <% end %>
-
-  <div id='new-image-form' class='hide'>
-    <%= form_for [@image.project, @image] do |f| %>
-
-      <div class='input-field col s6'>
-        <label for='Image'>Image URL</label>
-        <%= f.text_field :image, id: 'image', class: 'active materialize-textarea' %><br/>
-      </div>
-
-      <div class='input-field col s6'>
-        <label for='Caption'>Caption</label>
-        <%= f.text_field :caption, id: 'caption', class: 'active materialize-textarea' %><br/>
-      </div>
-
-      <div>
-        <p><%= link_to 'Cancel', :back, class: 'waves-effect waves-light btn' %></p>
-        <p><%= f.submit 'Save Image', class: 'waves-effect waves-light btn' %></p>
-      </div>
-
-    <% end %>
-  </div>
 
   <% if user_signed_in? %>
     <p>
       <%= link_to 'Edit', edit_project_path(@project) %>
-      <%= link_to 'Delete', project_path(@project), method: :delete %>
+      <%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure you want to Delete this Project?"} %>
     </p>
   <% end %>
-</div>    
+
+  <!-- NEW IMAGE MODAL -->
+  <div class='modal fade' id='newImageModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
+    <div class='modal-dialog' role='document'>
+      <div class='modal-content'>
+        <div class='modal-header'>
+          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+          <h4 class='modal-title' id='myModalLabel'>Modal title</h4>
+        </div>
+        <div class='modal-body'>
+          <%= form_for [@image.project, @image] do |f| %>
+
+            <div class='input-field col s6'>
+              <label for='Image'>Image URL</label>
+              <%= f.text_field :image, id: 'image', class: 'active materialize-textarea' %><br/>
+            </div>
+
+            <div class='input-field col s6'>
+              <label for='Caption'>Caption</label>
+              <%= f.text_field :caption, id: 'caption', class: 'active materialize-textarea' %><br/>
+            </div>
+
+        </div>
+        <div class='modal-footer'>
+          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button> 
+          <%= f.submit 'Save Image', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END IMAGE MODAL -->
+
+</div>
