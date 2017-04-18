@@ -16,12 +16,57 @@
 //= require_tree .
 
 $( document ).ready(function() {
-  $('#new-image-link').on('click', function (event) {
+
+  // MODAL SCRIPTS
+  $('.project-img').on('click', function (event) {
     event.preventDefault();
-    if ($('#new-image-form')[0].classList.contains('hide')) {
-      $('#new-image-form')[0].classList.remove('hide');
-    } else {
-      $('#new-image-form')[0].classList.add('hide');
-    }
+    var targetModal = '#modal-'+event.target.id;
+    $(targetModal).modal();
   });
+
+  // CAROUSEL SCRIPTS
+  var lefts = $('.left');
+  for (var i=1; i <= lefts.length; i++) {
+    var element = '#left-'+i;
+    $(element).click(function(e){
+      e.preventDefault();
+      target = e.target;
+      if (target.classList.contains('glyphicon')) {
+        target = target.parentElement;
+      }
+      target = target.id.replace('left-','');
+      var items = $('#carousel-'+target).find('.carousel-item')
+      var currentItem = items.filter('.active');
+      var prevItem = currentItem.prev();
+      currentItem.removeClass('active');
+      if ( prevItem.length ) {
+        currentItem = prevItem.addClass('active');
+      } else {
+        currentItem = items.last().addClass('active');
+      }
+    });
+  }
+
+  var rights = $('.right');
+  for (var i=1; i <= rights.length; i++) {
+    var element = '#right-'+i;
+    $(element).click(function(e){
+      e.preventDefault();
+      target = e.target;
+      if (target.classList.contains('glyphicon')) {
+        target = target.parentElement;
+      }
+      target = target.id.replace('right-','');
+      var items = $('#carousel-'+target).find('.carousel-item')
+      var currentItem = items.filter('.active');
+      var nextItem = currentItem.next();
+      currentItem.removeClass('active');
+      if ( nextItem.length ) {
+        currentItem = nextItem.addClass('active');
+      } else {
+        currentItem = items.first().addClass('active');
+      }
+    });
+  }
+
 });
