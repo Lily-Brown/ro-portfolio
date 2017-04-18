@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :get_project, only: [:show, :edit, :update, :destroy]
   before_action :get_images, only: [:show, :edit, :update, :destroy]
-  before_action :verify_logged_in, only: [:edit, :create, :update,:destroy]
+  before_action :verify_logged_in, only: [:new, :create, :edit, :update,:destroy]
   before_action :verify_user, only: [:edit, :update, :destroy]
 
   def index
