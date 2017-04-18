@@ -73,3 +73,38 @@
   opacity:0.3;
   z-index:1000;
 }
+
+@media screen and (max-width: 990px) {
+
+  .project-div {
+    width: 48%;
+    margin-bottom: 5%;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .project-div {
+    width: 90%;
+    margin-bottom: 5%;
+  }
+
+}
+
+@media only screen
+  and (min-device-width: 320px)
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2)
+  and (orientation: portrait) {
+
+  .project-div {
+    width: 90%;
+    margin-bottom: 5%;
+  }
+
+  .carousel-item img {
+    max-height: 90vh;
+    max-width: 250px;
+  }
+}
