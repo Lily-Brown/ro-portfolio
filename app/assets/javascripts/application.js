@@ -16,12 +16,60 @@
 //= require_tree .
 
 $( document ).ready(function() {
-  $('#new-image-link').on('click', function (event) {
+
+  // MODAL SCRIPTS
+  $('.project-img').on('click', function (event) {
     event.preventDefault();
-    if ($('#new-image-form')[0].classList.contains('hide')) {
-      $('#new-image-form')[0].classList.remove('hide');
-    } else {
-      $('#new-image-form')[0].classList.add('hide');
-    }
+    var targetModal = '#modal-'+event.target.id;
+    $(targetModal).modal();
   });
+
+  // CAROUSEL SCRIPTS
+  var projects = $('.project-div');
+  for (var i=1; i <= projects.length; i++) {
+    var element = '#left-'+i;
+    addClickEvent(element,'left-');
+    element = '#right-'+i;
+    addClickEvent(element,'right-');
+  }
+
+  function addClickEvent(element, direction) {
+    $(element).click(function(e){
+      e.preventDefault();
+      target = e.target;
+      if (target.classList.contains('glyphicon')) {
+        target = target.parentElement;
+      }
+      target = target.id.replace(direction,'');
+      var items = $('#carousel-'+target).find('.carousel-item')
+      var currentItem = items.filter('.active');
+      var prevItem = currentItem.prev();
+      currentItem.removeClass('active');
+      if ( prevItem.length ) {
+        currentItem = prevItem.addClass('active');
+      } else {
+        currentItem = items.last().addClass('active');
+      }
+    });
+  }
+
+  // CAROUSEL HOVER
+  $('.carousel-hover').hover(
+    function() {
+      $(this).addClass('overlay');
+      $('.carousel-item').find('.carousel-item-caption').removeClass('hide');
+
+    }, function() {
+      $(this).removeClass('overlay');
+      $('.carousel-item').find('.carousel-item-caption').addClass('hide');
+    }
+  );
+
+  $('.carousel-hover').click(function(){
+    $(this).toggleClass('overlay');
+    $('.carousel-item').find('.carousel-item-caption').toggleClass('hide');
+  });
+
+
+
 });
