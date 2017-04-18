@@ -28,13 +28,19 @@ $( document ).ready(function() {
   var lefts = $('.left');
   for (var i=1; i <= lefts.length; i++) {
     var element = '#left-'+i;
+    addClickEvent(element,'left-');
+    element = '#right-'+i;
+    addClickEvent(element,'right-');
+  }
+
+  function addClickEvent(element, direction) {
     $(element).click(function(e){
       e.preventDefault();
       target = e.target;
       if (target.classList.contains('glyphicon')) {
         target = target.parentElement;
       }
-      target = target.id.replace('left-','');
+      target = target.id.replace(direction,'');
       var items = $('#carousel-'+target).find('.carousel-item')
       var currentItem = items.filter('.active');
       var prevItem = currentItem.prev();
@@ -43,28 +49,6 @@ $( document ).ready(function() {
         currentItem = prevItem.addClass('active');
       } else {
         currentItem = items.last().addClass('active');
-      }
-    });
-  }
-
-  var rights = $('.right');
-  for (var i=1; i <= rights.length; i++) {
-    var element = '#right-'+i;
-    $(element).click(function(e){
-      e.preventDefault();
-      target = e.target;
-      if (target.classList.contains('glyphicon')) {
-        target = target.parentElement;
-      }
-      target = target.id.replace('right-','');
-      var items = $('#carousel-'+target).find('.carousel-item')
-      var currentItem = items.filter('.active');
-      var nextItem = currentItem.next();
-      currentItem.removeClass('active');
-      if ( nextItem.length ) {
-        currentItem = nextItem.addClass('active');
-      } else {
-        currentItem = items.first().addClass('active');
       }
     });
   }
