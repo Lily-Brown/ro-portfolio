@@ -53,6 +53,26 @@ $( document ).ready(function() {
     });
   }
 
+  // PROJECT HOVER
+  $('.project-hover').hover(
+    function() {
+      var targetElement = '#project-caption-'+this.id;
+      $(this).addClass('overlay');
+      $(targetElement).removeClass('hide');
+
+    }, function() {
+      var targetElement = '#project-caption-'+this.id;
+      $(this).removeClass('overlay');
+      $(targetElement).addClass('hide');
+    }
+  );
+
+  $('.project-hover').click(function(){
+    var targetElement = '#project-caption-'+this.id;
+    $(this).toggleClass('overlay');
+    $(targetElement).toggleClass('hide');
+  });
+
   // CAROUSEL HOVER
   $('.carousel-hover').hover(
     function() {
@@ -69,7 +89,5 @@ $( document ).ready(function() {
     $(this).toggleClass('overlay');
     $('.carousel-item').find('.carousel-item-caption').toggleClass('hide');
   });
-
-
 
 });

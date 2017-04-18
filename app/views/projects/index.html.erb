@@ -2,13 +2,16 @@
   <% @projects.each do |project|%>
     <div class='project-div'>
       <% if project.images.length > 0 && project.primary_image != nil %>
-        <p><%= image_tag project.primary_image.image, class: 'project-img', id: project.id %></p>
+        <p><%= image_tag project.primary_image.image, class: 'project-img project-hover', id: project.id %></p>
       <% elsif project.images.length > 0 %>
-        <p><%= image_tag project.images.first.image, class: 'project-img', id: project.id %></p>
+        <p><%= image_tag project.images.first.image, class: 'project-img project-hover', id: project.id %></p>
       <% else %>
       <br />
       <p>Add Images To Your Project</p>
       <% end %>
+      <div class='project-caption hide' id='project-caption-<%= project.id %>'>
+        <%= project.title %>
+      </div>
       <% if user_signed_in? %>
         <%= link_to 'Edit', project_path(project), class: 'btn btn-secondary' %>
       <% end %>
@@ -48,6 +51,10 @@
                   <span class='sr-only'>Next</span>
                 </div>
               <% end %>
+            </div>
+            <div class='project-summary'>
+              <h3><%= project.title%></h3>
+              <p><%= project.summary%></p>
             </div>
             <% end %>
           </div>
