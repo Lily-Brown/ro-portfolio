@@ -1,7 +1,6 @@
 class ImagesController < ApplicationController
   before_action :get_image, only: [:show, :edit, :update, :destroy]
   before_action :verify_logged_in, only: [:new, :create, :edit, :update,:destroy]
-  before_action :verify_user, only: [:edit, :update, :destroy]
 
   def new
     @image = Image.new
@@ -59,15 +58,6 @@ class ImagesController < ApplicationController
     unless user_signed_in?
       flash[:error] = 'You must be logged in.'
       redirect_to new_user_session_path
-    end
-  end
-
-  def verify_user
-    unless params[:image] && params[:image][:flagged] || params[:action] != "destroy"
-      unless @image.owner == current_user || current_user.admin
-        flash[:error] = 'You are not authorized to perform this action.'
-        redirect_to :back
-      end
     end
   end
 
