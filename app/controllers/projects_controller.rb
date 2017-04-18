@@ -2,7 +2,6 @@ class ProjectsController < ApplicationController
   before_action :get_project, only: [:show, :edit, :update, :destroy]
   before_action :get_images, only: [:show, :edit, :update, :destroy]
   before_action :verify_logged_in, only: [:new, :create, :edit, :update,:destroy]
-  before_action :verify_user, only: [:edit, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -68,15 +67,6 @@ class ProjectsController < ApplicationController
     unless user_signed_in?
       flash[:error] = 'You must be logged in.'
       redirect_to new_user_session_path
-    end
-  end
-
-  def verify_user
-    unless params[:project] && params[:project][:flagged] || params[:action] != "destroy"
-      unless @project.owner == current_user || current_user.admin
-        flash[:error] = 'You are not authorized to perform this action.'
-        redirect_to :back
-      end
     end
   end
 
