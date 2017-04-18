@@ -1,32 +1,37 @@
 <h1><%= @project.title %></h1>
 
-<div class='project-info'>
+<% if user_signed_in? %>
+  <p>
+    <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-secondary' %>
+    <%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure you want to Delete this Project?"}, class: 'btn btn-secondary' %>
+  </p>
+<% end %>
 
-  <p><%= @project.summary %></p>
+<p><%= @project.summary %></p>
+
+<div class='project-info'>
 
   <% if @project.images.length > 0 %>
     <% @project.images.each do |image|%>
-      <p><%= image_tag image.image %></p>
-      <p><%= image.caption %></p>
-      <% if user_signed_in? %>
-        <div>
-          <p><%= link_to 'Edit', edit_project_image_path(image.project,image),
-                class: 'waves-effect waves-light btn' %></p>
-          <p><%= link_to 'Delete', project_image_path(image.project,image),
-                class: 'waves-effect waves-light btn', method: :delete, data: {confirm: "Are you sure you want to Delete this Image?"} %></p>
-        </div>
-      <% end %>
+      <div class='project-div'>
+        <p><%= image_tag image.image, class: 'project-img' %></p>
+        <p><%= image.caption %></p>
+        <% if user_signed_in? %>
+          <div>
+            <%= link_to 'Edit', edit_project_image_path(image.project,image),
+                  class: 'btn btn-secondary' %> 
+            <%= link_to 'Delete', project_image_path(image.project,image),
+                  class: 'btn btn-secondary', method: :delete, data: {confirm: "Are you sure you want to Delete this Image?"} %>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 
   <% if user_signed_in? %>
     <p>
-      <%= link_to 'Add New Image', new_project_image_path(@project) %>
-    </p>
-
-    <p>
-      <%= link_to 'Edit', edit_project_path(@project) %>
-      <%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure you want to Delete this Project?"} %>
+      <br />
+      <%= link_to 'Add New Image', new_project_image_path(@project), class: 'btn btn-primary' %>
     </p>
   <% end %>
 
