@@ -1,4 +1,6 @@
-<div class='container'>
+<div class='form-container'>
+  <h2>Edit Project Information</h2>
+  <br />
 
   <%= form_for @project do |f| %>
 
@@ -8,7 +10,7 @@
   </div>
 
   <div class='form-group'>
-    <label for='summary'>Project</label>
+    <label for='summary'>Project Summary</label>
         <%= f.text_area :summary, id: 'summary', class: 'form-control' %><br/>
   </div>
 

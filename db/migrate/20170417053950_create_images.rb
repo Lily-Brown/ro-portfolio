@@ -4,6 +4,7 @@ class CreateImages < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :caption
       t.integer :project_id
+      t.boolean :is_primary, :default => false 
 
       t.timestamps
     end

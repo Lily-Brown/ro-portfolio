@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   before_action :verify_user, only: [:edit, :update, :destroy]
 
   def index
-    @projects = Project.all.reverse_order
+    @projects = Project.all
   end
 
   def new

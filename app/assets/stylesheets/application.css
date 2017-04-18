@@ -14,8 +14,13 @@
  *= require_self
  */
 
-.hide {
-  display: none;
+.container {
+  max-width: 100% !important;
+}
+
+.form-container {
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 .navbar-brand img {

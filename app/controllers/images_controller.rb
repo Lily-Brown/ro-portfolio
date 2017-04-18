@@ -28,6 +28,7 @@ class ImagesController < ApplicationController
 
   def update
     @image.update_attributes(image_params)
+    set_false if @image.is_primary == true
 
     if @image.save
       flash[:success] = "Image updated successfully."
@@ -62,7 +63,17 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:image,:caption)
+    params.require(:image).permit(:image,:is_primary,:caption)
+  end
+
+  def set_false
+    images = Image.where(project_id: @image.project_id)
+    images.each do |image|
+      if image != @image
+        image.is_primary = false
+        image.save
+      end
+    end
   end
 
 end

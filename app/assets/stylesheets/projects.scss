@@ -1,3 +1,17 @@
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.project-info {
+  width: 100%;
+  text-align: center;
+}
+
+.project-div {
+  display: inline-block;
+  width: 32%;
+}
+
+.project-img {
+  width: 90%;
+}
