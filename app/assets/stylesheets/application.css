@@ -18,8 +18,9 @@
   max-width: 100% !important;
 }
 
-.hide {
-  display: none;
+.form-container {
+  max-width: 50%;
+  margin: 0 auto;
 }
 
 .navbar-brand img {
