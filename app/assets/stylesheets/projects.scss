@@ -18,7 +18,7 @@
 
 .close {
   position: absolute;
-  right: 2%;
+  right: 3%;
   top: 2%;
   z-index: 150;
 }
@@ -33,12 +33,43 @@
 
 .carousel-item img {
   height: 70vh;
+  max-width: 425px;
+  /*z-index: 50;*/
 }
 
 .carousel-item {
   display: none;
+  position: relative;
+  /*z-index:999;*/
+}
+
+.carousel-hover {
+  display: inline-block;
+}
+
+.carousel-item-caption {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5em;
 }
 
 .active {
   display: block !important;
+}
+
+.carousel-control.left, .carousel-control.right {
+  background-image: none !important;
+}
+
+.glyphicon-chevron-right, .glyphicon-chevron-left {
+  color: gray;
+}
+
+.overlay {
+  background-color: black;
+  opacity:0.3;
+  z-index:1000;
 }

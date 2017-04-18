@@ -53,4 +53,23 @@ $( document ).ready(function() {
     });
   }
 
+  // CAROUSEL HOVER
+  $('.carousel-hover').hover(
+    function() {
+      $(this).addClass('overlay');
+      $('.carousel-item').find('.carousel-item-caption').removeClass('hide');
+
+    }, function() {
+      $(this).removeClass('overlay');
+      $('.carousel-item').find('.carousel-item-caption').addClass('hide');
+    }
+  );
+
+  $('.carousel-hover').click(function(){
+    $(this).toggleClass('overlay');
+    $('.carousel-item').find('.carousel-item-caption').toggleClass('hide');
+  });
+
+
+
 });

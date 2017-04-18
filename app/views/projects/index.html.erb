@@ -27,7 +27,12 @@
                 <% else %>
                   <div class='carousel-item'>
                 <% end %>
-                  <%= image_tag image.image %>
+                  <div class='carousel-hover'>
+                    <%= image_tag image.image %>
+                  </div>
+                    <div class='carousel-item-caption hide'>
+                      <%= image.caption %>
+                    </div>
                 </div>
               <% end %>
               <% if project.images.length > 1 %>
