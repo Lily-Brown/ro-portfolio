@@ -30,14 +30,16 @@
                   <%= image_tag image.image %>
                 </div>
               <% end %>
-              <div class='left carousel-control' id='left-<%= project.id %>'>
-                <span class='glyphicon glyphicon-chevron-left'></span>
-                <span class='sr-only'>Previous</span>
-              </div>
-              <div class='right carousel-control' id='right-<%= project.id %>'>
-                <span class='glyphicon glyphicon-chevron-right'></span>
-                <span class='sr-only'>Next</span>
-              </div>
+              <% if project.images.length > 1 %>
+                <div class='left carousel-control' id='left-<%= project.id %>'>
+                  <span class='glyphicon glyphicon-chevron-left'></span>
+                  <span class='sr-only'>Previous</span>
+                </div>
+                <div class='right carousel-control' id='right-<%= project.id %>'>
+                  <span class='glyphicon glyphicon-chevron-right'></span>
+                  <span class='sr-only'>Next</span>
+                </div>
+              <% end %>
             </div>
             <% end %>
           </div>

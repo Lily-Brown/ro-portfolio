@@ -25,8 +25,8 @@ $( document ).ready(function() {
   });
 
   // CAROUSEL SCRIPTS
-  var lefts = $('.left');
-  for (var i=1; i <= lefts.length; i++) {
+  var projects = $('.project-div');
+  for (var i=1; i <= projects.length; i++) {
     var element = '#left-'+i;
     addClickEvent(element,'left-');
     element = '#right-'+i;
