@@ -17,3 +17,8 @@
 .hide {
   display: none;
 }
+
+.navbar-brand img {
+  height: 2em;
+  border-radius: 5px;
+}
