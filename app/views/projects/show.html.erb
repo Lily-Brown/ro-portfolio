@@ -21,49 +21,13 @@
 
   <% if user_signed_in? %>
     <p>
-      <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#newImageModal'>
-        Add New Image
-      </button>
+      <%= link_to 'Add New Image', new_project_image_path(@project) %>
     </p>
-  <% end %>
 
-  <% if user_signed_in? %>
     <p>
       <%= link_to 'Edit', edit_project_path(@project) %>
       <%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure you want to Delete this Project?"} %>
     </p>
   <% end %>
-
-  <!-- NEW IMAGE MODAL -->
-  <div class='modal fade' id='newImageModal' tabindex='-1' role='dialog' aria-labelledby='myModalLabel'>
-    <div class='modal-dialog' role='document'>
-      <div class='modal-content'>
-        <div class='modal-header'>
-          <button type='button' class='close' data-dismiss='modal' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
-          <h4 class='modal-title' id='myModalLabel'>Modal title</h4>
-        </div>
-        <div class='modal-body'>
-          <%= form_for [@image.project, @image] do |f| %>
-
-            <div class='input-field col s6'>
-              <label for='Image'>Image URL</label>
-              <%= f.text_field :image, id: 'image', class: 'active materialize-textarea' %><br/>
-            </div>
-
-            <div class='input-field col s6'>
-              <label for='Caption'>Caption</label>
-              <%= f.text_field :caption, id: 'caption', class: 'active materialize-textarea' %><br/>
-            </div>
-
-        </div>
-        <div class='modal-footer'>
-          <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button> 
-          <%= f.submit 'Save Image', class: 'btn btn-primary' %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- END IMAGE MODAL -->
 
 </div>
