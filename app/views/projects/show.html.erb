@@ -8,18 +8,22 @@
     <% @project.images.each do |image|%>
       <p><%= image_tag image.image %></p>
       <p><%= image.caption %></p>
-      <div>
-        <p><%= link_to 'Edit', edit_project_image_path(image.project,image),
-              class: 'waves-effect waves-light btn' %></p>
-        <p><%= link_to 'Delete', project_image_path(image.project,image),
-              class: 'waves-effect waves-light btn', method: :delete %></p>
-      </div>
+      <% if user_signed_in? %>
+        <div>
+          <p><%= link_to 'Edit', edit_project_image_path(image.project,image),
+                class: 'waves-effect waves-light btn' %></p>
+          <p><%= link_to 'Delete', project_image_path(image.project,image),
+                class: 'waves-effect waves-light btn', method: :delete %></p>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 
-  <p>
-    <%= link_to 'Add New Image', '#', :id => 'new-image-link' %>
-  </p>
+  <% if user_signed_in? %>
+    <p>
+      <%= link_to 'Add New Image', '#', :id => 'new-image-link' %>
+    </p>
+  <% end %>
 
   <div id='new-image-form' class='hide'>
     <%= form_for [@image.project, @image] do |f| %>
@@ -42,8 +46,10 @@
     <% end %>
   </div>
 
-  <p>
-    <%= link_to 'Edit', edit_project_path(@project) %>
-    <%= link_to 'Delete', project_path(@project), method: :delete %>
-  </p>
+  <% if user_signed_in? %>
+    <p>
+      <%= link_to 'Edit', edit_project_path(@project) %>
+      <%= link_to 'Delete', project_path(@project), method: :delete %>
+    </p>
+  <% end %>
 </div>    
