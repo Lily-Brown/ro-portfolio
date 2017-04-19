@@ -29,9 +29,9 @@
             <div id='carousel-<%= project.id %>' class='carousel'>
               <% project.images.order('id asc').each do |image|%>
                 <% if image == project.images.last %>
-                <div class='carousel-item active'>
+                  <div class='carousel-item active'>
                 <% else %>
-                <div class='carousel-item'>
+                  <div class='carousel-item'>
                 <% end %>
                   <div class='carousel-hover'>
                     <%= image_tag image.image %>
