@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_action :verify_logged_in, only: [:new, :create, :edit, :update,:destroy]
 
   def index
-    @projects = Project.all
+    @projects = Project.all.order(:id)
   end
 
   def new

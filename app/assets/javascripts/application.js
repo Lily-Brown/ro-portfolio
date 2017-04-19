@@ -26,10 +26,11 @@ $( document ).ready(function() {
 
   // CAROUSEL SCRIPTS
   var projects = $('.project-div');
-  for (var i=1; i <= projects.length; i++) {
-    var element = '#left-'+i;
+  for (var i=0; i < projects.length; i++) {
+    var targetId = projects[i].children[0].children[0].id;
+    var element = '#left-'+targetId;
     addClickEvent(element,'left-');
-    element = '#right-'+i;
+    element = '#right-'+targetId;
     addClickEvent(element,'right-');
   }
 
