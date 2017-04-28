@@ -14,7 +14,7 @@
   <% if @project.images.length > 0 %>
     <% @project.images.order('id asc').each do |image|%>
       <div class='project-div'>
-        <p><%= image_tag image.image, class: 'project-img' %></p>
+        <p><%= image_tag image.image.url(:original), class: 'project-img' %></p>
         <p><%= image.caption %></p>
         <% if user_signed_in? %>
           <div>

@@ -35,6 +35,8 @@ gem 'devise'
 
 # Paperclip
 gem 'paperclip', '~> 5.0.0'
+# S3 for Paperclip
+gem 'aws-sdk', '~> 2.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
