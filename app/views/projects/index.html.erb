@@ -2,9 +2,9 @@
   <% @projects.each do |project|%>
     <div class='project-div'>
       <% if project.images.length > 0 && project.primary_image != nil %>
-        <p><%= image_tag project.primary_image.image.url(:medium), class: 'project-img project-hover', id: project.id %></p>
+        <p><%= image_tag project.primary_image.image.url(:original), class: 'project-img project-hover', id: project.id %></p>
       <% elsif project.images.length > 0 %>
-        <p><%= image_tag project.images.first.image.url(:medium), class: 'project-img project-hover', id: project.id %></p>
+        <p><%= image_tag project.images.first.image.url(:original), class: 'project-img project-hover', id: project.id %></p>
       <% else %>
       <br />
       <p>Add Images To Your Project</p>
